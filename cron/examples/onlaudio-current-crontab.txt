@@ -1,0 +1,68 @@
+SHELL=/bin/bash
+PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+###############################################################################
+# ONL AUDIO CRON
+#
+# This host runs:
+# 1) HyperDeck sync/upload + cleanup
+# 2) Spotify playlist start/stop automation
+###############################################################################
+
+###############################################################################
+# WEEKLY SUNDAY PLAYLIST (EVERY SUNDAY)
+#
+# Start: 7:59 AM
+# Stop : 2:05 PM
+###############################################################################
+
+# Start weekly Sunday playlist
+59 7 * * 0 . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/connect_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+# Stop weekly Sunday playlist
+05 14 * * 0 . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/stop_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+# Safety-net stop weekly Sunday playlist
+15 14 * * 0 . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/stop_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+
+###############################################################################
+# CHRISTMAS EVE EVE — DECEMBER 23
+#
+# Start: 4:30 PM
+# Stop : 8:15 PM
+###############################################################################
+
+# Start Dec 23 playlist
+30 16 23 12 * . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/connect_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+# Stop Dec 23 playlist
+15 20 23 12 * . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/stop_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+
+###############################################################################
+# CHRISTMAS EVE — DECEMBER 24
+#
+# Start: 1:00 PM
+# Stop : 6:30 PM
+###############################################################################
+
+# Start Dec 24 playlist
+0 13 24 12 * . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/connect_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+# Stop Dec 24 playlist
+30 18 24 12 * . $HOME/scripts/spotify_env.sh; /usr/bin/python3 $HOME/scripts/stop_outside_spotify.py >> /usr/local/var/log/spotify/cron.log 2>&1
+
+
+###############################################################################
+# HYPERDECK PIPELINE
+#
+# Weekly sync/upload and cleanup.
+# Scripts handle their own logging to /usr/local/var/log/hyperdeck/sync_upload.log.
+###############################################################################
+
+# Weekly Sunday sync/upload via Python pipeline
+35 13 * * 0 /usr/bin/python3 $HOME/scripts/hyperdeck_pipeline/bin/master_sync_upload.py >> /usr/local/var/log/hyperdeck/cron.log 2>&1
+
+# Weekly Saturday cleanup via Python pipeline
+0 17 * * 6 /usr/bin/python3 $HOME/scripts/hyperdeck_pipeline/bin/cleanup_hyperdeck.py --confirm-remote >> /usr/local/var/log/hyperdeck/cron.log 2>&1

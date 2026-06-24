@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.northridge.hyperdeck.master-sync</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/northridge/scripts/hyperdeck_pipeline/bin/master_sync_upload.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/northridge/scripts</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/northridge</string>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>0</integer>
+    <key>Hour</key>
+    <integer>13</integer>
+    <key>Minute</key>
+    <integer>35</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/northridge/Library/Logs/hyperdeck/launchd.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/northridge/Library/Logs/hyperdeck/launchd.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>LimitLoadToSessionType</key>
+  <array>
+    <string>Aqua</string>
+  </array>
+</dict>
+</plist>

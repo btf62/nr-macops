@@ -1,5 +1,9 @@
 # Codex Handoff: Northridge MacOps / RockOps Mac Mini
 
+> Historical planning note: the current ONLAudio-specific source of truth is
+> `docs/codex-handoff-onlaudio.md`, with strategic direction in
+> `docs/codex-handoff-onlaudio-addendum.md`.
+
 ## Purpose
 
 We are setting up an always-on Mac mini to serve as a controlled operations and development workstation for Northridge Church.
@@ -15,6 +19,12 @@ This machine will support:
 - scheduled maintenance and reporting tasks
 
 This Mac mini should be treated as lightweight church infrastructure, not a casual personal desktop.
+
+For the current phase, `ONLAudio` is the Phase 0 / prototype host. It should
+remain focused on preserving current Spotify and HyperDeck automation while the
+repo captures inventory and migration guidance. The long-term target for
+heavier Codex, MCP, Rock, indexing, and development workloads is a future Apple
+Silicon Mac mini.
 
 ## Primary Goals
 
@@ -217,7 +227,8 @@ Preferred remote access stack:
 - macOS Screen Sharing for GUI access
 - optional HDMI dummy plug if headless display behavior is poor
 
-Do not expose SSH, dashboards, or control panels directly to the public internet.
+Do not expose SSH, dashboards, MCP servers, or other control surfaces directly
+to the public internet.
 
 ## Initial Codex Task
 

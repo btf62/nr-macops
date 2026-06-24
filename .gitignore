@@ -1,0 +1,52 @@
+.DS_Store
+._*
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.mobileprovision
+secrets/
+config/*.local.*
+config/local/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node and tooling
+node_modules/
+.npm/
+.pnpm-store/
+
+# Logs and runtime output
+*.log
+logs/*
+!logs/.gitkeep
+tmp/*
+!tmp/.gitkeep
+
+# Media and production data
+*.mp4
+*.mov
+*.m4v
+*.wav
+*.aiff
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+HyperDeckDownloads/
+
+# macOS app/runtime state
+*.pid
+*.swp
+*.swo
