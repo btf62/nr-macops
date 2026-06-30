@@ -45,9 +45,14 @@ The configured ONL Audio cache path is:
 $HOME/.cache-northridge-outside-spotify-token.json
 ```
 
-The current valid Spotipy cache was copied into that path on 2026-06-30 so the
-new explicit path would not break cron before the planned fresh reauthorization.
-Run `scripts/spotify/spotify_auth_smoke_test.py` interactively when performing
+The previous valid Spotipy cache was copied into that path on 2026-06-30 so the
+new explicit path would not break cron during the code change. A fresh
+interactive reauthorization was then completed on 2026-06-30 using
+`spotify_auth_smoke_test.py --reset-cache`; the read-only smoke test verified
+the Spotify user and saw `Outside Spotify`.
+
+Next planned reauthorization reminder: 2026-11-30. Run
+`scripts/spotify/spotify_auth_smoke_test.py` interactively when performing
 reauthorization.
 
 ## Current Cron Schedule

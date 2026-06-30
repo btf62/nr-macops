@@ -134,7 +134,21 @@ PY
 
 ## Recommended Work
 
-Target maintenance date: **Tuesday, 2026-07-07**.
+Completed maintenance date: **Tuesday, 2026-06-30**.
+
+Reauthorization result:
+
+- `python3 spotify_auth_smoke_test.py --reset-cache` completed successfully on
+  ONL Audio at about 15:19 EDT.
+- The new configured cache file is
+  `$HOME/.cache-northridge-outside-spotify-token.json`.
+- The smoke test verified the Spotify user and saw the `Outside Spotify`
+  device without starting playback.
+- A local backup of the previous cache was kept at
+  `$HOME/.cache-northridge-outside-spotify-token.json.backup.20260630_151924`.
+- Next planned reauthorization reminder: **Monday, 2026-11-30**, which is five
+  months after this reauthorization and leaves about a one-month buffer before
+  the expected six-month token lifetime.
 
 Preferred implementation plan:
 
@@ -155,7 +169,8 @@ Preferred implementation plan:
    run interactively on ONL Audio and verifies `current_user()` / `devices()`
    without starting playback.
 5. Reauthorize ONL Audio before Spotify's 2026-07-20 enforcement date, then
-   add a recurring reminder to reauthorize at least every five months.
+   add a recurring reminder to reauthorize at least every five months. Done on
+   2026-06-30.
 
 Credentials cleanup remains an important follow-up, but the July 2026
 refresh-token change is the higher-priority operational risk.
