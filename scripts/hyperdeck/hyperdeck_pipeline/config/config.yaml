@@ -1,0 +1,48 @@
+# Shared configuration for the Python HyperDeck pipeline.
+# This is the single source of truth for the Python sync, rename, upload,
+# master orchestration, and cleanup scripts.
+
+hyperdecks:
+  - name: HD1
+    ip: 10.20.193.141
+    volumes: ["sd1", "sd2"]
+  - name: HD2
+    ip: 10.20.193.113
+    volumes: ["1", "2"]
+
+paths:
+  # Production download tree and shared pipeline log.
+  downloads_dir: /Users/northridge/HyperDeckDownloads
+  log_file: /usr/local/var/log/hyperdeck/sync_upload.log
+
+rename:
+  # Service-window matching is based on recording start time for HD1 and file
+  # mtime for HD2, using the tolerance below.
+  time_tolerance_min: 3
+  hd1_services:
+    - time: "08:25"
+      label: "08-30am"
+    - time: "09:40"
+      label: "09-45am"
+    - time: "10:55"
+      label: "11-00am"
+    - time: "12:10"
+      label: "12-15pm"
+  hd2_services:
+    - time: "08:54"
+      label: "09-00am"
+    - time: "10:24"
+      label: "10-30am"
+
+upload:
+  # Files are uploaded to <remote>:<dest_base>/<MM.DD.YY>.
+  remote: gdrive
+  dest_base: Online
+  extension: ".mp4"
+
+email:
+  # Summary email settings for the master pipeline.
+  recipients:
+    - bfiles@northridgerochester.com
+    - joconnor@northridgerochester.com
+  tail_lines: 65

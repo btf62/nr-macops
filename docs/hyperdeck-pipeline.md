@@ -1,6 +1,6 @@
 # HyperDeck Pipeline
 
-Last reviewed: 2026-06-24.
+Last reviewed: 2026-06-30.
 
 ## Live Runtime
 
@@ -19,7 +19,16 @@ Important bin scripts:
 - `cleanup_hyperdeck.py`
 - `pipeline_config.py`
 
-Do not move or edit these scripts yet.
+Repo-managed copies now live under:
+
+```text
+scripts/hyperdeck/hyperdeck_pipeline/
+```
+
+The live runtime still uses `/Users/northridge/scripts/hyperdeck_pipeline/`
+until an explicit cutover is reviewed and tested. The copied test wrappers in
+`scripts/hyperdeck/` resolve their local repo path, but active cron still points
+at the existing production location.
 
 ## Current Cron Schedule
 
